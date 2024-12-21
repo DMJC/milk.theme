@@ -1,0 +1,6 @@
+{
+	ThemeDescription="A Theme for GNUstep";
+	ThemeName="Milk";
+	ThemeRelease="0.1";
+	Authors=("James Carthew <jcarthew@gmail.com>");
+}
