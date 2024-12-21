@@ -3,22 +3,10 @@ Milk.theme
 
 A GNUstep theme based on Milk Theme for OSX by Max Rudberg.
 
-UNDER DEVELOPMENT!!
-
 ====================
 
-The main theme purpose, is to demonstrate that:
+The point of this theme is to provide a Mac OSX-like theme for GNUstep
 
-1) GNUstep is themable.
-2) GNUstep can looks modern
-3) GNUstep is not OPENSTEP, it follow Cocoa, and it is a Cocoa free and open source reimplementation
-
-Soon, more infos. Enjoy!
+GNUstep is not OPENSTEP, it follows Cocoa/Appkit, and is a free and open source reimplementation of the Apple APIs.
 
 ====================
-
-A pre-release screenshot.
-
-Note: This screenshot is a bit old, now the vertical progressbar indicator fills and looks like the horizontal progress bar indicator.
-
-![screenshot]()
