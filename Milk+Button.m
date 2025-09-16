@@ -1,6 +1,7 @@
 #import "Milk.h"
 #import "Milk+Button.h"
 
+
 NSString * const kMilkIsDefaultButton = @"kMilkIsDefaultButton";
 NSString * const kMilkPulseProgressKey = @"kMilkPulseProgressKey";
 
@@ -34,7 +35,7 @@ NSString * const kMilkPulseProgressKey = @"kMilkPulseProgressKey";
 {
   NSColor * color;
   CGFloat pulse = [[bc pulseProgress] floatValue];
-  color = [NSColor colorWithCalibratedRed: 0.62 green: 0.82 blue: 0.965 alpha: 1];
+  color = [NSColor colorWithCalibratedRed: 0.8 green: 0.8 blue: 0.8 alpha: 1];
   color = [NSColor colorWithCalibratedHue: [color hueComponent] saturation: 1.0 - pulse*0.6 brightness: 0.9 + pulse*0.1 alpha: [color alphaComponent]];
   return color;
 }
@@ -101,18 +102,6 @@ NSString * const kMilkPulseProgressKey = @"kMilkPulseProgressKey";
   [roundedRectanglePath stroke];
 }
 
-- (void) drawPathButton: (NSBezierPath*) path
-                     in: (NSCell*)cell
-			            state: (GSThemeControlState) state
-{
-  NSColor	*backgroundColor = [self buttonColorInCell: cell forState: state];
-  NSColor* strokeColorButton = [Milk controlStrokeColor];
-  NSGradient* buttonBackgroundGradient = [self _bezelGradientWithColor: backgroundColor];
-  [buttonBackgroundGradient drawInBezierPath: path angle: -90];
-  [strokeColorButton setStroke];
-  [path setLineWidth: 1];
-  [path stroke];
-}
 - (void) _drawRoundBezel: (NSRect)cellFrame withColor: (NSColor*)backgroundColor
 {
   [self _drawRoundBezel: cellFrame withColor: backgroundColor andRadius: 4];
