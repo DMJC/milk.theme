@@ -1,13 +1,23 @@
 #include "Milk.h"
 
 @interface NSBrowserCell(MilkTheme)
+- (void) MILKdrawInteriorWithFrame: (NSRect)cellFrame inView: (NSView *)controlView;
 @end
+
+@implementation Milk(NSBrowserCell)
+- (void) _overrideNSBrowserCellMethod_drawInteriorWithFrame: (NSRect)cellFrame inView: (NSView *)controlView {
+  MILKLOG(@"_overrideNSBrowserCellMethod_drawInteriorWithFrame:inView:");
+  NSBrowserCell *xself = (NSBrowserCell*)self;
+  [xself MILKdrawInteriorWithFrame:cellFrame inView:controlView];
+}
+@end
+
 @implementation NSBrowserCell(MilkTheme)
 
 /*
  * Displaying
  */
-- (void) drawInteriorWithFrame: (NSRect)cellFrame inView: (NSView *)controlView
+- (void) MILKdrawInteriorWithFrame: (NSRect)cellFrame inView: (NSView *)controlView
 {
   NSRect	title_rect = cellFrame;
   NSImage	*branch_image = nil;

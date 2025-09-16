@@ -61,7 +61,8 @@
     }
   else if([view class] == [NSMatrix class])
     {
-      NSSize size = [(NSMatrix*) view cellSize];
+      // TS: unused
+      // NSSize size = [(NSMatrix*) view cellSize];
       NSCell* selectedCell = [(NSMatrix*) view selectedCell];
       NSUInteger row = [(NSMatrix*)view selectedRow];
       NSUInteger col = [(NSMatrix*)view selectedColumn];
@@ -106,7 +107,7 @@
             return NSMakeSize(4, 4);
           case NSGrooveBorder:
           case NSBezelBorder:
-            return NSMakeSize(4, 4);
+            return NSMakeSize(1, 1);
           case NSNoBorder:
           default:
             return NSZeroSize;

@@ -10,12 +10,78 @@
 
 #define ICON_WIDTH	16
 
+@interface NSSearchFieldCell (MilkTheme)
+- (void) MILKdrawWithFrame: (NSRect)cellFrame inView: (NSView*)controlView;
+- (NSRect) MILKsearchTextRectForBounds: (NSRect)rect;
+- (void) _MILKdrawBorderAndBackgroundWithFrame: (NSRect)cellFrame
+				       inView: (NSView*)controlView;
+- (void) MILKdrawInteriorWithFrame: (NSRect)cellFrame inView: (NSView*)controlView;
+- (void) _MILKdrawEditorWithFrame: (NSRect)cellFrame
+			  inView: (NSView *)controlView;
+- (NSRect) MILKtitleRectForBounds: (NSRect)theRect;
+- (NSRect) MILKsearchButtonRectForBounds: (NSRect)rect;
+- (NSRect) MILKcancelButtonRectForBounds: (NSRect)rect;
+@end
+
+@implementation Milk(NSSearchFieldCell)
+- (void) _overrideNSSearchFieldCellMethod_drawWithFrame: (NSRect)cellFrame inView: (NSView*)controlView {
+  MILKLOG(@"_overrideNSSearchFieldCellMethod_drawWithFrame:inView");
+  NSSearchFieldCell *xself = (NSSearchFieldCell*)self;
+  [xself MILKdrawWithFrame: (NSRect)cellFrame inView: (NSView*)controlView];
+}
+
+- (NSRect) _overrideNSSearchFieldCellMethod_searchTextRectForBounds: (NSRect)rect {
+  MILKLOG(@"_overrideNSSearchFieldCellMethod_searchTextRectForBounds:");
+  NSSearchFieldCell *xself = (NSSearchFieldCell*)self;
+  return [xself MILKsearchTextRectForBounds:rect];
+}
+
+- (void) _overrideNSSearchFieldCellMethod__drawBorderAndBackgroundWithFrame: (NSRect)cellFrame
+								     inView: (NSView*)controlView {
+  MILKLOG(@"_overrideNSSearchFieldCellMethod__drawBorderAndBackgroundWithFrame:inView:");
+  NSSearchFieldCell *xself = (NSSearchFieldCell*)self;
+  [xself _MILKdrawBorderAndBackgroundWithFrame:cellFrame inView:controlView];
+}
+
+- (void) _overrideNSSearchFieldCellMethod_drawInteriorWithFrame: (NSRect)cellFrame inView: (NSView*)controlView {
+  MILKLOG(@"_overrideNSSearchFieldCellMethod_drawInteriorWithFrame:inView:");
+  NSSearchFieldCell *xself = (NSSearchFieldCell*)self;
+  [xself MILKdrawInteriorWithFrame:cellFrame inView:controlView];
+}
+
+- (void) _overrideNSSearchFieldCellMethod__drawEditorWithFrame: (NSRect)cellFrame
+							inView: (NSView *)controlView {
+  MILKLOG(@"_overrideNSSearchFieldCellMethod__drawEditorWithFrame:inView:");
+  NSSearchFieldCell *xself = (NSSearchFieldCell*)self;
+  [xself _MILKdrawEditorWithFrame:cellFrame inView:controlView];
+}
+
+- (NSRect) _overrideNSSearchFieldCellMethod_titleRectForBounds: (NSRect)theRect {
+  MILKLOG(@"_overrideNSSearchFieldCellMethod_titleRectForBounds:");
+  NSSearchFieldCell *xself = (NSSearchFieldCell*)self;
+  return [xself MILKtitleRectForBounds:theRect];
+}
+
+- (NSRect) _overrideNSSearchFieldCellMethod_searchButtonRectForBounds: (NSRect)rect {
+  MILKLOG(@"_overrideNSSearchFieldCellMethod_searchButtonRectForBounds:");
+  NSSearchFieldCell *xself = (NSSearchFieldCell*)self;
+  return [xself MILKsearchButtonRectForBounds:rect];  
+}
+
+- (NSRect) _overrideNSSearchFieldCellMethod_cancelButtonRectForBounds: (NSRect)rect {
+  MILKLOG(@"_overrideNSSearchFieldCellMethod_cancelButtonRectForBounds:");
+  NSSearchFieldCell *xself = (NSSearchFieldCell*)self;
+  return [xself MILKcancelButtonRectForBounds:rect];
+}
+
+@end
 
 @implementation NSSearchFieldCell (MilkTheme)
 
-- (void) drawWithFrame: (NSRect)cellFrame inView: (NSView*)controlView
+- (void) MILKdrawWithFrame: (NSRect)cellFrame inView: (NSView*)controlView
 {
-  NSRect frame = cellFrame;
+  // TS: unused
+  // NSRect frame = cellFrame;
   [super drawWithFrame: [self searchTextRectForBounds: cellFrame ]
 	 inView: controlView];
  [_search_button_cell drawWithFrame: [self searchButtonRectForBounds: cellFrame] inView: controlView];
@@ -26,7 +92,7 @@
 
 /* This method put the "x" cell inside the Text cell */
 
-- (NSRect) searchTextRectForBounds: (NSRect)rect
+- (NSRect) MILKsearchTextRectForBounds: (NSRect)rect
 {
 	NSRect search, text, part;
 
@@ -47,7 +113,7 @@
 	return text;
 }
 
-- (void) _drawBorderAndBackgroundWithFrame: (NSRect)cellFrame
+- (void) _MILKdrawBorderAndBackgroundWithFrame: (NSRect)cellFrame
                                     inView: (NSView*)controlView
 {
 
@@ -90,7 +156,7 @@
   [fillGradient drawInBezierPath: fillPath angle: 90];
 }
 
-- (void) drawInteriorWithFrame: (NSRect)cellFrame inView: (NSView*)controlView
+- (void) MILKdrawInteriorWithFrame: (NSRect)cellFrame inView: (NSView*)controlView
 {
   if (_cell.in_editing)
    [self _drawEditorWithFrame: cellFrame inView: controlView];
@@ -108,7 +174,7 @@
     }
 }
 
-- (void) _drawEditorWithFrame: (NSRect)cellFrame
+- (void) _MILKdrawEditorWithFrame: (NSRect)cellFrame
 		       inView: (NSView *)controlView
 {
   if ([controlView isKindOfClass: [NSControl class]])
@@ -129,7 +195,7 @@
     }
 }
 
-- (NSRect) titleRectForBounds: (NSRect)theRect
+- (NSRect) MILKtitleRectForBounds: (NSRect)theRect
 {
   if (_cell.type == NSTextCellType)
     {
@@ -153,7 +219,7 @@
     }
 }
 
-- (NSRect) searchButtonRectForBounds: (NSRect)rect;
+- (NSRect) MILKsearchButtonRectForBounds: (NSRect)rect
 {
   NSRect search, part;
   NSDivideRect(rect, &search, &part, ICON_WIDTH, NSMinXEdge);
@@ -163,7 +229,7 @@
 }
 
 
-- (NSRect) cancelButtonRectForBounds: (NSRect)rect
+- (NSRect) MILKcancelButtonRectForBounds: (NSRect)rect
 {
   NSRect part, clear;
 

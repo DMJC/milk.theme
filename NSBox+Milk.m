@@ -6,9 +6,31 @@
 
 #import "Milk.h"
 
+@interface NSBox (MilkTheme)
+- (void) MILKdrawRect: (NSRect)rect;
+@end
+
+@interface NSBox (Private)
+- (NSRect) MILKcalcSizesAllowingNegative: (BOOL)aFlag;
+@end
+
+@implementation Milk(NSBox)
+- (void) _overrideNSBoxMethod_drawRect: (NSRect)rect {
+  MILKLOG(@"_overrideNSBoxMethod_drawRect:");
+  NSBox* xself = (NSBox*)self;
+  [xself MILKdrawRect:rect];
+}
+
+- (NSRect) _overrideNSBoxMethod_calcSizesAllowingNegative: (BOOL)aFlag {
+  MILKLOG(@"_overrideNSBoxMethod_calcSizesAllowingNegative:");
+  NSBox* xself = (NSBox*)self;
+  return [xself MILKcalcSizesAllowingNegative:aFlag];
+}
+@end
+
 @implementation NSBox (MilkTheme)
 
-- (void) drawRect: (NSRect)rect
+- (void) MILKdrawRect: (NSRect)rect
 {
 	rect = NSIntersectionRect(_bounds, rect);
 	[self setBorderWidth: 100.0];
@@ -24,7 +46,7 @@
 
 @implementation NSBox (Private)
 
-- (NSRect) calcSizesAllowingNegative: (BOOL)aFlag
+- (NSRect) MILKcalcSizesAllowingNegative: (BOOL)aFlag
 {
   GSTheme	*theme = [GSTheme theme];
   NSRect r = NSZeroRect;

@@ -167,8 +167,8 @@ static NSImage *spinningImages[MaxCount];
 {
 
   //// Color Declarations
-  NSColor* baseColor = [NSColor colorWithCalibratedRed: 0.376 green: 0.761 blue: 0.957 alpha: 1];
-  NSColor* lightColor = [baseColor highlightWithLevel: 0.5];
+  NSColor* baseColor = [NSColor colorWithCalibratedRed: 0.8 green: 0.8 blue: 0.8 alpha: .1];
+  NSColor* lightColor = [baseColor highlightWithLevel: 0.2];
   NSColor* lightColor2 = [NSColor colorWithCalibratedHue: [baseColor hueComponent] saturation: 0.2 brightness: [baseColor brightnessComponent] alpha: [baseColor alphaComponent]];
   NSColor* saturate = [NSColor colorWithCalibratedHue: [baseColor hueComponent] saturation: 0.8 brightness: [baseColor brightnessComponent] alpha: [baseColor alphaComponent]];
 

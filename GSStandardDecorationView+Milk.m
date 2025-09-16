@@ -1,16 +1,25 @@
 #import <GNUstepGUI/GSWindowDecorationView.h>
 #import <GNUstepGUI/GSTheme.h>
+#import "Milk.h"
 
 #define TITLEBAR_BUTTON_SIZE 15
 #define TITLEBAR_PADDING_LEFT 10.5
 #define TITLEBAR_PADDING_RIGHT 10.5
 #define TITLEBAR_PADDING_TOP 5.5
 @interface GSStandardWindowDecorationView(MilkTheme)
+- (void) MILKupdateRects;
+@end
 
+@implementation Milk(GSStandardWindowDecorationView)
+- (void) _overrideGSStandardWindowDecorationViewMethod_updateRects {
+  GSStandardWindowDecorationView* xself = (GSStandardWindowDecorationView*)self;
+  MILKLOG(@"GSStandardDecorationView+Milk updateRects");
+  [xself MILKupdateRects];
+}
 @end
 
 @implementation GSStandardWindowDecorationView(MilkTheme)
-- (void) updateRects
+- (void) MILKupdateRects
 {
   GSTheme *theme = [GSTheme theme];
   if (hasTitleBar)

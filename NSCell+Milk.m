@@ -6,9 +6,21 @@
 
 #import "Milk.h"
 
+@interface NSCell(MilkTheme)
+- (void) MILKdrawInteriorWithFrame: (NSRect)cellFrame inView: (NSView*)controlView;
+@end
+
+@implementation Milk(NSCell)
+- (void) _overrideNSCellMethod_drawInteriorWithFrame: (NSRect)cellFrame inView: (NSView*)controlView {
+  MILKLOG(@"_overrideNSCellMethod_drawInteriorWithFrame:inView");
+  NSCell *xself = (NSCell*) self;
+  [xself MILKdrawInteriorWithFrame:cellFrame inView:controlView];
+}
+@end
+
 @implementation NSCell(MilkTheme)
 
-- (void) drawInteriorWithFrame: (NSRect)cellFrame inView: (NSView*)controlView
+- (void) MILKdrawInteriorWithFrame: (NSRect)cellFrame inView: (NSView*)controlView
 {
   NSRect drawingRect = [self drawingRectForBounds: cellFrame];
 

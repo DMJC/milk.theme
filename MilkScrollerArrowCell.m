@@ -4,21 +4,35 @@
 
 @implementation MilkScrollerArrowCell
 
+- (void) setArrowType: (MilkScrollerArrowType) t
+{
+  scroller_arrow_type = t;
+}
+// TS: 2024-12-31
+// An original version of this file apparently invoked this method
+// from NSButtonCell.
+// However, more modern compilers do not allow access from outside of the class.
+// The solution is to copy this method from NSButtonCell and then
+// modified slightly to use accessors instead of instance variables.
+
 - (GSThemeControlState) themeControlState
 {
   unsigned mask;
   GSThemeControlState buttonState = GSThemeNormalState;
 
   // set the mask
-  if (_cell.is_highlighted)
+  //  if (_cell.is_highlighted)
+  if ([self isHighlighted] == YES)
     {
       mask = _highlightsByMask;
-      if (_cell.state)
+      // if (_cell.state)
+      if ([self state] != 0)
         {
           mask &= ~_showAltStateMask;
         }
     }
-  else if (_cell.state)
+  // else if (_cell.state)
+  else if ([self state] != 0)
     mask = _showAltStateMask;
   else
     mask = NSNoCellMask;
@@ -61,10 +75,6 @@
   return buttonState;
 }
 
-- (void) setArrowType: (MilkScrollerArrowType) t
-{
-  scroller_arrow_type = t;
-}
 - (void) drawBezelWithFrame: (NSRect)cellFrame inView: (NSView *)controlView
 {
   GSThemeControlState buttonState = [self themeControlState];

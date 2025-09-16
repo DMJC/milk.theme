@@ -6,8 +6,3 @@
 
 #import "Milk.h"
 
-@interface NSSearchFieldCell (MilkTheme)
-{
-}
-- (void) drawWithFrame: (NSRect)cellFrame inView: (NSView*)controlView;
-@end

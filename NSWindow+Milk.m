@@ -34,16 +34,15 @@
         }
         [[defaultbuttoncell controlView] setNeedsDisplay: YES];
     }
-  if (progress >= 1.0)
+  if (defaultbuttoncell && progress >= 1.0)
   {
     reverse = !reverse;
     [self startAnimation];
   }
 }
-
 @end
 
-@interface DefaultButtonAnimationController : NSObject
+@interface DefaultButtonAnimationController : NSObject <NSWindowDelegate>
 
 {
   DefaultButtonAnimation * animation;
@@ -86,13 +85,35 @@
   //[animation stopAnimation];
   //[self startPulse: !animation.reverse];
 }
-@end
-@implementation NSWindow(MilkTheme)
 
-+ (NSButton *) standardWindowButton: (NSWindowButton)button
+- (void)windowDidResignKey:(NSNotification *)notification
+{
+      [animation stopAnimation];
+}
+
+// TS: added this method
+- (void)windowDidBecomeKey:(NSNotification *)notification
+{
+      [animation startAnimation];
+}
+
+@end
+
+// TS: forward dec
+@interface NSWindow(MilkTheme)
+- (void) MILKsetDefaultButtonCell: (NSButtonCell *)aCell;
+@end
+
+@implementation Milk(NSWindow)
+
+// NSWindow.m standardWindowButton:forStyleMask: defers to the theme which
+// implements this method (in the theme class).
+- (NSButton *) standardWindowButton: (NSWindowButton)button
                        forStyleMask: (NSUInteger) mask
 {
   MilkWindowButton *newButton;
+
+  MILKLOG(@"NSWindow+Milk standardWindowButton:forStyleMask:");
 
   switch (button)
     {
@@ -137,17 +158,30 @@
   [newButton setTag: button];
   return AUTORELEASE(newButton);
 }
-- (void) setDefaultButtonCell: (NSButtonCell *)aCell
+
+- (void) _overrideNSWindowMethod_setDefaultButtonCell: (NSButtonCell *)aCell {
+  MILKLOG(@"_overrideNSWindowMethod_setDefaultButtonCell:");
+  NSWindow *xself = (NSWindow*)self;
+  [xself MILKsetDefaultButtonCell:aCell];
+}
+@end
+
+@implementation NSWindow(MilkTheme)
+
+- (void) MILKsetDefaultButtonCell: (NSButtonCell *)aCell
 {
   ASSIGN(_defaultButtonCell, aCell);
-  _f.default_button_cell_key_disabled = NO;
+  [self enableKeyEquivalentForDefaultButtonCell];
 
   [aCell setKeyEquivalent: @"\r"];
   [aCell setKeyEquivalentModifierMask: 0];
   [aCell setIsDefaultButton: [NSNumber numberWithBool: YES]];
+
   DefaultButtonAnimationController * animationcontroller = [[DefaultButtonAnimationController alloc] initWithButtonCell: aCell];
+  [self setDelegate:animationcontroller];
   [animationcontroller startPulse];
 }
+
 - (void) animateDefaultButton: (id)sender
 {
 }

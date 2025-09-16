@@ -2,9 +2,11 @@
 #import "Milk+Drawings.h"
 
 @interface Milk(MilkTable)
+
 @end
 
 @implementation Milk(MilkTable)
+
 
 - (NSRect) tableHeaderCellDrawingRectForBounds: (NSRect)theRect
 {
@@ -64,7 +66,8 @@
                       inView: (NSView *)controlView
                        state: (GSThemeControlState)state
 {
-      NSRect rect;
+      // TS: unused
+      // NSRect rect;
 
       // Leave a 1pt thick horizontal line underneath the header
       if (![controlView isFlipped])

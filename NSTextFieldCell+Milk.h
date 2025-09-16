@@ -6,8 +6,9 @@
 
 #import "Milk.h"
 
-@interface NSTextFieldCell (MilkTheme) 
-{
-}
-@end
+// TS:
+// @interface NSTextFieldCell (MilkTheme) 
+// {
+// }
+// @end
 

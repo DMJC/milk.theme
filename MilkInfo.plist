@@ -1,6 +1,30 @@
 {
-	ThemeDescription="A Theme for GNUstep";
-	ThemeName="Milk";
-	ThemeRelease="0.1";
-	Authors=("James Carthew <jcarthew@gmail.com>");
+	GSThemeDescription="A Theme for GNUstep";
+	GSThemeName="Milk";
+	GSThemeAuthors = (
+		       "Riccardo Canalicchio",
+		       "Alessandro Sangiuliano",
+		       "Bertrand Dekoninck",
+                       "James Carthew"
+		       );		       
+	GSThemeDetails = "A Theme for GNUstep";
+	GSThemeDomain = {
+		      GSBackHandlesWindowDecorations = NO;
+                      NSMenuInterfaceStyle = NSMacintoshInterfaceStyle;
+		      MilkMenuBarTransparency = 0.95;
+		      MenuShouldShowIcon = YES;
+		      };
+	GSThemeIcon = "ThemeIcon.png";
+	GSThemePreview = "ThemePreview.png";
+	GSThemeLicense = "";
+	GSThemeTiles = {
+	};
+	GSThemeVersion = "0.1";
+	/* Default font settings */
+	NSFont = "Lucida Grande,DejaVu Sans 12";
+	NSBoldFont = "Lucida Grande Bold,DejaVu Sans Bold 12";
+	NSMenuFont = "Lucida Grande,DejaVu Sans 12";
+	NSTitleBarFont = "Lucida Grande Bold,DejaVu Sans Bold 12";
+	NSMessageFont = "Lucida Grande,DejaVu Sans 12";
+	NSFixedPitchFont = "DejaVu Sans Mono 11";
 }
