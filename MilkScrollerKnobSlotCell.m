@@ -19,9 +19,9 @@
   NSColor *shadowColor = [baseColor shadowWithLevel: 0.25];
   NSGradient* gr = [[NSGradient alloc] initWithColorsAndLocations:
       shadowColor, 1.0,
+      baseColor, 0.8,
       baseColor, 0.7,
-      baseColor, 0.5,
-      baseColor, 0.3,
+      baseColor, 0.6,
       shadowColor, 0.0,
       nil];
   int a = 0;

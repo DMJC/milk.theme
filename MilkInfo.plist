@@ -13,6 +13,7 @@
                       NSMenuInterfaceStyle = NSMacintoshInterfaceStyle;
 		      MilkMenuBarTransparency = 0.95;
 		      MenuShouldShowIcon = YES;
+		      NSScrollViewInterfaceStyle = NSMacintoshInterfaceStyle;
 		      };
 	GSThemeIcon = "ThemeIcon.png";
 	GSThemePreview = "ThemePreview.png";

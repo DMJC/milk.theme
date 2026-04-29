@@ -74,6 +74,7 @@
   [cell setButtonType: NSMomentaryChangeButton];
   [cell setBezelStyle: NSRoundedBezelStyle];
   [cell setImagePosition: NSImageOnly];
+  [cell setHorizontal: horizontal];
 
   [cell setTitle: @""];
   if (horizontal)

@@ -29,10 +29,21 @@
   [knobPath setLineWidth: 2.0];
   [knobPath stroke];
 
-  NSRect innerRect = NSMakeRect(-cellFrame.origin.x + cellFrame.size.width / 2.0,
-                              cellFrame.origin.y,
-                              cellFrame.size.width / 3.0,
-                              cellFrame.size.height - 2);
+  NSRect innerRect;
+  if (horizontal)
+    {
+      innerRect = NSMakeRect(cellFrame.origin.x,
+                             -cellFrame.origin.y + cellFrame.size.height / 2.0,
+                             cellFrame.size.width - 2,
+                             cellFrame.size.height / 3.0);
+    }
+  else
+    {
+      innerRect = NSMakeRect(-cellFrame.origin.x + cellFrame.size.width / 2.0,
+                             cellFrame.origin.y,
+                             cellFrame.size.width / 3.0,
+                             cellFrame.size.height - 2);
+    }
   NSBezierPath *innerPath = [NSBezierPath bezierPathWithRoundedRect: innerRect
                                                          xRadius: radius
                                                          yRadius: radius];
