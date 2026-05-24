@@ -119,14 +119,14 @@
     {
       case NSWindowCloseButton:
         newButton = [[MilkWindowButton alloc] init];
-        [newButton setBaseColor: [NSColor colorWithCalibratedRed: 0.698 green: 0.427 blue: 1.00 alpha: 1]];
+        [newButton setBaseColor: [NSColor colorWithCalibratedRed: 0.9 green: 0.9 blue: 0.9 alpha: 1]];
         [newButton setImage: [NSImage imageNamed: @"common_Close"]];
         [newButton setAlternateImage: [NSImage imageNamed: @"common_CloseH"]];
         [newButton setAction: @selector(performClose:)];
         break;
       case NSWindowMiniaturizeButton:
         newButton = [[MilkWindowButton alloc] init];
-        [newButton setBaseColor: [NSColor colorWithCalibratedRed: 0.9 green: 0.7 blue: 0.3 alpha: 1]];
+        [newButton setBaseColor: [NSColor colorWithCalibratedRed: 0.9 green: 0.9 blue: 0.9 alpha: 1]];
         [newButton setImage: [NSImage imageNamed: @"common_Miniaturize"]];
         [newButton setAlternateImage: [NSImage imageNamed: @"common_MiniaturizeH"]];
         [newButton setAction: @selector(miniaturize:)];

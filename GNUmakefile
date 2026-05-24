@@ -40,6 +40,7 @@ Milk_OBJC_FILES = \
 ADDITIONAL_OBJC_LIBS = -lobjc
 ADDITIONAL_TOOL_LIBS =
 $(BUNDLE_NAME)_RESOURCE_FILES = \
+	./Resources/ThemePreview.png \
 	./Resources/ThemeImages\
 	./Resources/ThemeTiles\
 	./Resources/*.clr

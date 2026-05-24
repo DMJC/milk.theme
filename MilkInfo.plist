@@ -1,15 +1,17 @@
 {
-	GSThemeDescription="A Theme for GNUstep";
+	GSThemeDescription="A Theme for GNUstep inspired by Milk for OSX by Max Rudberg";
 	GSThemeName="Milk";
 	GSThemeAuthors = (
 		       "Riccardo Canalicchio",
 		       "Alessandro Sangiuliano",
 		       "Bertrand Dekoninck",
+		       "Max Rudberg",
                        "James Carthew"
 		       );		       
-	GSThemeDetails = "A Theme for GNUstep";
+	GSThemeDetails = "A Theme for GNUstep inspired by Milk for OSX by Max Rudberg";
 	GSThemeDomain = {
 		      GSBackHandlesWindowDecorations = NO;
+		      GSWindowCornerRadius = 6;
                       NSMenuInterfaceStyle = NSMacintoshInterfaceStyle;
 		      MilkMenuBarTransparency = 0.95;
 		      MenuShouldShowIcon = YES;
